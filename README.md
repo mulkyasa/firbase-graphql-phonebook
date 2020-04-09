@@ -1,2 +1,2 @@
-# firebase-graphql-phonebook
-Create a simple phonebook app using ReactJS, Redux, Firebase and GraphQL
+# Firebase GraphQL Phonebook
+Create a simple phonebook app using ReactJS, Redux, Apollo, Firebase and GraphQL
