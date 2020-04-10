@@ -23,39 +23,39 @@ class UserForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <button type="button" className="btn btn-link text-dark">
-          <i class="fas fa-plus"></i>
-        </button>
-        <button type="button" className="btn btn-link text-dark">
-          <i class="fas fa-search"></i>
-        </button>
-        <div className="input-group">
+      <form onSubmit={this.handleSubmit} className="form-inline mb-3">
+        <div className="form-group">
+          <label htmlFor="name" className="mr-sm-2">Name</label>
           <input
             type="text"
+            id="name"
             name="name"
             value={this.state.Name}
             onChange={this.handleChange}
             placeholder="Insert your name"
-            className="form-control"
+            className="form-control mr-sm-3"
+            autoComplete="off"
             required
           />
+          <label htmlFor="number" className="mr-sm-2">Number</label>
           <input
             type="text"
+            id="number"
             name="Number"
             value={this.state.Number}
             onChange={this.handleChange}
             placeholder="Insert your number"
-            className="form-control"
+            className="form-control mr-sm-3"
             autoComplete="off"
             required
           />
-          <div className="input-group-append">
-            <button type="submit" value="Submit" className="btn btn-link">
-              <i class="fas fa-send"></i>
-            </button>
-          </div>
         </div>
+        <button type="submit" value="Submit" className="btn btn-outline-dark">
+        <i className="fas fa-save mr-sm-2"></i>Save
+        </button>
+        <button type="submit" value="Submit" className="btn">
+          Cancel
+        </button>
       </form>
     );
   }

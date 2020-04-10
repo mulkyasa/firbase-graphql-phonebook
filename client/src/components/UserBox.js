@@ -16,12 +16,25 @@ export default class UserBox extends Component {
             </p>
           </div>
         </div>
-        <div className="overflow-hidden">
-          <UserForm />
-          <UserList />
+        <div className="card rounded-0 overflow-hidden">
+          <div className="card-body">
+            <div className="row justify-content-between">
+              <div className="col-4">
+                <button type="button" className="btn btn-success">
+                  <p className="mb-0"><i className="fas fa-plus mr-2"></i>Add data</p>
+                </button>
+              </div>
+              <div className="form-group has-search col-4">
+                <span className="fas fa-search form-control-feedback"></span>
+                <input type="text" className="form-control" placeholder="Search"/>
+              </div>
+            </div>
+            <UserForm />
+            <UserList />
+          </div>
         </div>
         <hr className="mt-5" />
-        <p className="lead pb-3 small text-muted text-center">
+        <p className="lead pb-3 small text-muted text-left">
           Made by{" "}
           <a href="https://www.github.com/mulkyasa/" className="text-muted">
             Yasa Mulky Al Afgani
