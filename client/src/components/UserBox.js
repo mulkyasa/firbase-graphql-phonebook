@@ -34,7 +34,7 @@ export default class UserBox extends Component {
           </div>
         </div>
         <hr className="mt-5" />
-        <p className="lead pb-3 small text-muted text-left">
+        <p className="lead pb-3 small text-muted text-center">
           Made by{" "}
           <a href="https://www.github.com/mulkyasa/" className="text-muted">
             Yasa Mulky Al Afgani
