@@ -29,6 +29,9 @@ class UserForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="form-inline mb-3">
         <div className="form-group">
+          <button type="button" onClick={() => this.setState({ showForm: false })} value="Submit" className="btn">
+            <i className="fas fa-times-circle h6"></i>
+          </button>
           <label htmlFor="name" className="mr-sm-2">Name</label>
           <input
             type="text"
@@ -57,9 +60,6 @@ class UserForm extends Component {
         <button type="submit" value="Submit" className="btn btn-outline-dark">
           <i className="fas fa-save mr-sm-2"></i>Save
         </button>
-        <button type="button" onClick={() => this.setState({ showForm: false })} value="Submit" className="btn">
-          Cancel
-        </button>
       </form>
     );
   }
@@ -68,9 +68,17 @@ class UserForm extends Component {
     return (
       <div>
         {!this.state.showForm &&
-          <button type="button" onClick={() => this.setState({ showForm: true })} className="btn btn-success mb-3">
-            <p className="mb-0"><i className="fas fa-plus mr-2"></i>Add data</p>
-          </button>
+          <div className="row justify-content-between">
+            <div className="form-group has-search col-4">
+              <button type="button" onClick={() => this.setState({ showForm: true })} className="btn text-dark">
+                <p className="mb-0"><i className="fas fa-plus-circle h6 mr-sm-2"></i>Add data</p>
+              </button>
+            </div>
+            <div className="form-group has-search col-4">
+              <span className="fas fa-search form-control-feedback"></span>
+              <input type="text" className="form-control" placeholder="Search"/>
+            </div>
+          </div>
         }
         {this.state.showForm ? this.showForm() : null}
       </div>

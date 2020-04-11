@@ -18,14 +18,6 @@ export default class UserBox extends Component {
         </div>
         <div className="card rounded-0 overflow-hidden">
           <div className="card-body">
-            <div className="row justify-content-between">
-              <div className="col-4">
-              </div>
-              <div className="form-group has-search col-4">
-                <span className="fas fa-search form-control-feedback"></span>
-                <input type="text" className="form-control" placeholder="Search"/>
-              </div>
-            </div>
             <UserForm />
             <UserList />
           </div>
