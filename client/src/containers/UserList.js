@@ -1,9 +1,13 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { connect } from 'react-redux';
 import UserItem from "./User";
-// import { loadUser } from '../actions'
+import { loadUser } from '../actions';
 
 class UserList extends Component {
+  componentDidMount() {
+    this.props.loadUser();
+  }
+
   render() {
     const listItems = this.props.users.map((item, index) => (
       <UserItem
@@ -35,7 +39,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  // loadUser: () => dispatch(loadUser())
+  loadUser: () => dispatch(loadUser())
 })
 
 export default connect(
