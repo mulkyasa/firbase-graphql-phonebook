@@ -8,17 +8,17 @@ const client = new ApolloClient({
 })
 
 // start load chat data
-const loadUserSuccess = (users) => ({
+export const loadUserSuccess = (users) => ({
   type: 'LOAD_USER_SUCCESS',
   users
 })
 
-const loadUserFailure = () => ({
+export const loadUserFailure = () => ({
   type: 'LOAD_USER_FAILURE'
 })
 
 export const loadUser = () => {
-  const userQuery = gql`
+  const usersQuery = gql`
   query {
     users {
       userName
@@ -27,7 +27,7 @@ export const loadUser = () => {
     }
   }`;
   return dispatch => {
-    return client.query({query: userQuery})
+    return client.query({query: usersQuery})
     .then(function (response) {
       dispatch(loadUserSuccess(response.data.users))
     })
@@ -39,12 +39,12 @@ export const loadUser = () => {
 }
 
 // start post user data
-const postUserSuccess = (user) => ({
+export const postUserSuccess = (user) => ({
   type: 'POST_USER_SUCCESS',
   user
 })
 
-const postUserFailure = (userName) => ({
+export const postUserFailure = (userName) => ({
   type: 'POST_USER_FAILURE', userName
 })
 
@@ -54,7 +54,8 @@ const postUserRedux = (userName, Name, Number) => ({
 
 
 export const postUser = (Name, Number) => {
-  let userName = Date.now();
+  let id = Date.now()
+  let userName = id.toString();
   const addQuery = gql`
   mutation addUser($userName: String!, $Name: String!, $Number: String!) {
     addUser(userName: $userName, Name: $Name, Number: $Number) {
@@ -62,8 +63,7 @@ export const postUser = (Name, Number) => {
       Name
       Number
     }
-  }
-  `;
+  }`;
   return dispatch => {
     dispatch(postUserRedux(userName, Name, Number))
     return client.mutate({
@@ -75,6 +75,7 @@ export const postUser = (Name, Number) => {
       }
     })
     .then((response) => {
+      console.log(response.data);
       dispatch(postUserSuccess(response.data))
     })
     .catch((error) => {
@@ -89,18 +90,18 @@ const deleteUserRedux = (userName) => ({
   type: 'DELETE_USER', userName
 })
 
-const deleteUserSuccess = (users) => ({
+export const deleteUserSuccess = (users) => ({
   type: 'DELETE_USER_SUCCESS',
   users
 })
 
-const deleteUserFailure = () => ({
+export const deleteUserFailure = () => ({
   type: 'DELETE_USER_FAILURE'
 })
 
 export const deleteUser = (userName) => {
   const deleteQuery = gql`
-  mutation removeUser($userName: $String!) {
+  mutation removeUser($userName: String!) {
     removeUser(userName: $userName) {
       userName
     }

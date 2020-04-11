@@ -7,11 +7,11 @@ export default function PhonebookItem(props) {
       <td>{props.user.Name}</td>
       <td>{props.user.Number}</td>
       <td>
-        <button type="button" className="btn btn-sm btn-success">
-          Edit
+        <button className="btn text-dark border-right">
+          <small className="fa fa-edit mx-sm-2"></small>
         </button>
-        <button onClick={props.delete} type="button" className="btn btn-sm btn-danger">
-          Delete
+        <button onClick={props.delete} className="btn text-dark">
+          <small className="fas fa-trash-alt mx-sm-2"></small>
         </button>
       </td>
     </tr>

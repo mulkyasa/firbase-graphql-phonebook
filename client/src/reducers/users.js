@@ -14,20 +14,13 @@ const users = (state = [], action) => {
       ];
 
     case "POST_USER_SUCCESS":
-    break;
     case "POST_USER_FAILURE":
-    break;
-
     case "DELETE_USER":
       return state.filter((item) => item.userName !== action.userName);
 
     case "DELETE_USER_SUCCESS":
-      return state;
-
     case "LOAD_USER_FAILURE":
-    break;
     case "DELETE_USER_FAILURE":
-    break;
     default:
       return state;
   }

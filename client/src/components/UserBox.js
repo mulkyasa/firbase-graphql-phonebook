@@ -20,9 +20,6 @@ export default class UserBox extends Component {
           <div className="card-body">
             <div className="row justify-content-between">
               <div className="col-4">
-                <button type="button" className="btn btn-success">
-                  <p className="mb-0"><i className="fas fa-plus mr-2"></i>Add data</p>
-                </button>
               </div>
               <div className="form-group has-search col-4">
                 <span className="fas fa-search form-control-feedback"></span>

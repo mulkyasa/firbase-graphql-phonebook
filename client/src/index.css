@@ -66,8 +66,11 @@ code {
   color: #aaa;
 }
 
-.rounded-lg {
-  border-radius: 0.5rem;
+td .btn:focus{
+  border-color:#fff;
+  outline:0;
+  -webkit-box-shadow:none;
+  box-shadow:none;
 }
 
 input::placeholder {
