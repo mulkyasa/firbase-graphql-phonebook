@@ -1,5 +1,8 @@
 const users = (state = [], action) => {
   switch (action.type) {
+    case "LOAD_USER_SUCCESS":
+      return action.users;
+
     case "POST_USER":
       return [
         ...state,

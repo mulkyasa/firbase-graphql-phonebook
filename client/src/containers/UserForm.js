@@ -51,7 +51,7 @@ class UserForm extends Component {
           />
         </div>
         <button type="submit" value="Submit" className="btn btn-outline-dark">
-        <i className="fas fa-save mr-sm-2"></i>Save
+          <i className="fas fa-save mr-sm-2"></i>Save
         </button>
         <button type="submit" value="Submit" className="btn">
           Cancel

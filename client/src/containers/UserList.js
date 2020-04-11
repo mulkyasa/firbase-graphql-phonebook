@@ -12,6 +12,7 @@ class UserList extends Component {
     const listItems = this.props.users.map((item, index) => (
       <UserItem
         key={index}
+        id={index+1}
         user={item}
       />
     ));

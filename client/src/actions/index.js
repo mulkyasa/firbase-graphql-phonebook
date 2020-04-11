@@ -56,7 +56,7 @@ const postUserRedux = (userName, Name, Number) => ({
 export const postUser = (Name, Number) => {
   let userName = Date.now();
   const addQuery = gql`
-  mutation addUser($userName: $String!, $Name: $String!, $Number: $String!) {
+  mutation addUser($userName: String!, $Name: String!, $Number: String!) {
     addUser(userName: $userName, Name: $Name, Number: $Number) {
       userName
       Name

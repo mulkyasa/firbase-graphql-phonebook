@@ -3,7 +3,7 @@ import React from "react";
 export default function PhonebookItem(props) {
   return (
     <tr>
-      <th scope="row">{props.user.userName}</th>
+      <th scope="row">{props.id}</th>
       <td>{props.user.Name}</td>
       <td>{props.user.Number}</td>
       <td>
