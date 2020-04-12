@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import UserItem from "./User";
-import { loadUser } from '../actions';
+import { connect } from "react-redux";
+import UserItem from "./UserItem";
+import { loadUser } from "../actions";
 
 class UserList extends Component {
   componentDidMount() {
@@ -10,11 +10,7 @@ class UserList extends Component {
 
   render() {
     const listItems = this.props.users.map((item, index) => (
-      <UserItem
-        key={index}
-        id={index+1}
-        user={item}
-      />
+      <UserItem key={index} id={index + 1} user={item} />
     ));
 
     return (
@@ -27,23 +23,18 @@ class UserList extends Component {
             <th scope="col"></th>
           </tr>
         </thead>
-        <tbody>
-          {listItems}
-        </tbody>
+        <tbody>{listItems}</tbody>
       </table>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  users: state.users
-})
+  users: state.users,
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  loadUser: () => dispatch(loadUser())
-})
+  loadUser: () => dispatch(loadUser()),
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserList)
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);
