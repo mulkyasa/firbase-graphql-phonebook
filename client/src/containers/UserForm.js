@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { postUser } from "../actions";
+import { postUser, searchUser } from "../actions";
 import { connect } from "react-redux";
 
 class UserForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { Name: "", Number: "", showForm: false };
+    this.state = { Name: "", Number: "", showForm: false, value: '' };
   }
 
   handleNameChange = (event) => {
@@ -15,6 +15,14 @@ class UserForm extends Component {
   handleNumberChange = (event) => {
     this.setState({ Number: event.target.value });
   };
+
+  handleSearchChange = (event) => {
+    let value = event.target.value;
+    this.setState({
+      value: event.target.value
+    })
+    this.props.searchUser(value);
+  }
 
   handleSubmit = (event) => {
     this.props.addUser(this.state.Name, this.state.Number);
@@ -92,7 +100,10 @@ class UserForm extends Component {
                   type="text"
                   className="form-control"
                   placeholder="Search"
+                  value={this.state.value}
+                  onChange={this.handleSearchChange}
                 />
+                {console.log(this.handleSearchChange)}
                 <div className="input-group-append">
                   <button className="btn btn-dark" type="button">
                     <small className="fas fa-search"></small>
@@ -110,6 +121,7 @@ class UserForm extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   addUser: (Name, Number) => dispatch(postUser(Name, Number)),
+  searchUser: (value) => dispatch(searchUser(value))
 });
 
 export default connect(null, mapDispatchToProps)(UserForm);

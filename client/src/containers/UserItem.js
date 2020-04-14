@@ -10,7 +10,6 @@ class UserItem extends Component {
       Name: props.user.Name,
       Number: props.user.Number
     };
-    console.log(this.state)
   }
 
   handleNameChange = (event) => {
