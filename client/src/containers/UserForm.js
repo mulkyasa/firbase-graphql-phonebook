@@ -103,7 +103,6 @@ class UserForm extends Component {
                   value={this.state.value}
                   onChange={this.handleSearchChange}
                 />
-                {console.log(this.handleSearchChange)}
                 <div className="input-group-append">
                   <button className="btn btn-dark" type="button">
                     <small className="fas fa-search"></small>

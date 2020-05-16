@@ -62,6 +62,7 @@ const updateUser = (user) => {
 
 const deleteUser = (user) => {
   const referencePath = "/Phonebook/" + user.userName + "/";
+  console.log(user.userName)
   const phonebookReference = firebase.database().ref(referencePath);
   return new Promise((resolve, reject) => {
     phonebookReference.remove((error) => {

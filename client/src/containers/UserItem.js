@@ -8,7 +8,8 @@ class UserItem extends Component {
     this.state = {
       userName: props.user.userName,
       Name: props.user.Name,
-      Number: props.user.Number
+      Number: props.user.Number,
+      edit: false
     };
   }
 
@@ -70,7 +71,7 @@ class UserItem extends Component {
               <button onClick={() => this.setState({edit: true})} className="btn text-dark border-right">
                 <small className="fa fa-edit mx-sm-2"></small>
               </button>
-              <button onClick={this.props.delete} className="btn text-dark">
+              <button onClick={this.props.deleteUser} className="btn text-dark">
                 <small className="fas fa-trash-alt mx-sm-2"></small>
               </button>
             </div>
@@ -82,7 +83,7 @@ class UserItem extends Component {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  delete: () => dispatch(deleteUser(ownProps.userName)),
+  deleteUser: () => dispatch(deleteUser(ownProps.userName)),
   updateUser: (userName, Name, Number) => dispatch(updateUser(userName, Name, Number))
 });
 

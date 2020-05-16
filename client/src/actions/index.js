@@ -157,6 +157,7 @@ export const deleteUserFailure = () => ({
 });
 
 export const deleteUser = (userName) => {
+  console.log(userName)
   const deleteQuery = gql`
     mutation removeUser($userName: String!) {
       removeUser(userName: $userName) {
@@ -174,7 +175,7 @@ export const deleteUser = (userName) => {
         },
       })
       .then((response) => {
-        dispatch(deleteUserSuccess(response.data));
+        dispatch(deleteUserSuccess(response));
       })
       .catch((error) => {
         console.error(error);
