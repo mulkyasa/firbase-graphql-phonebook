@@ -12,7 +12,6 @@ class UserItem extends Component {
       edit: false
     };
   }
-
   handleNameChange = (event) => {
     this.setState({ Name: event.target.value });
   };
