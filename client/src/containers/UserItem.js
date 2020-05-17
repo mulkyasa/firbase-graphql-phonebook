@@ -82,7 +82,7 @@ class UserItem extends Component {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  deleteUser: () => dispatch(deleteUser(ownProps.userName)),
+  deleteUser: () => dispatch(deleteUser(ownProps.user.userName)),
   updateUser: (userName, Name, Number) => dispatch(updateUser(userName, Name, Number))
 });
 
