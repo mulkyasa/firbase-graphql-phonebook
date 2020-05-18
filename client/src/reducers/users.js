@@ -13,7 +13,7 @@ const users = (state = [], action) => {
           userName: action.userName,
           Name: action.Name,
           Number: action.Number,
-          search: true
+          search: true,
         },
       ];
 
@@ -49,16 +49,15 @@ const users = (state = [], action) => {
 
     case "SEARCH_USER":
       return state.map((item) => ({
-        ...console.log(item.Name.toLowerCase().includes(action.value)),
         ...item,
-        ...(item.Name.toLowerCase().includes(action.value) ||
+        search: (item.Name.toLowerCase().includes(action.value.toLowerCase()) ||
           item.Number.includes(action.value)),
       }));
 
     case "SEARCH_USER_RESET":
       return state.map((item) => ({
         ...item,
-        search: true
+        search: true,
       }));
 
     case "DELETE_USER":

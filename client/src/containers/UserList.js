@@ -10,7 +10,9 @@ class UserList extends Component {
 
   render() {
     const listItems = this.props.users.map((item, index) => (
+      item.search ? (
         <UserItem key={index} id={index + 1} user={item} />
+      ) : null
     ));
 
     return (

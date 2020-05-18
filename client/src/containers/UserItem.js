@@ -9,9 +9,10 @@ class UserItem extends Component {
       userName: props.user.userName,
       Name: props.user.Name,
       Number: props.user.Number,
-      edit: false
+      edit: false,
     };
   }
+
   handleNameChange = (event) => {
     this.setState({ Name: event.target.value });
   };
@@ -20,9 +21,18 @@ class UserItem extends Component {
     this.setState({ Number: event.target.value });
   };
 
+  handleEditClose = () => {
+    this.setState({ edit: false });
+  };
+
   handleSubmit = (event) => {
-    event.preventDefault()
-    this.props.updateUser(this.state.userName, this.state.Name, this.state.Number)
+    event.preventDefault();
+    this.props.updateUser(
+      this.state.userName,
+      this.state.Name,
+      this.state.Number
+    );
+    this.handleEditClose();
   };
 
   render() {
@@ -58,16 +68,25 @@ class UserItem extends Component {
         <td className="text-right">
           {this.state.edit ? (
             <div>
-              <button onClick={this.handleSubmit} className="btn text-dark border-right">
+              <button
+                onClick={this.handleSubmit}
+                className="btn text-dark border-right"
+              >
                 <small className="fa fa-save mx-sm-2"></small>
               </button>
-              <button onClick={() => this.setState({edit: false})} className="btn text-danger">
+              <button
+                onClick={() => this.setState({ edit: false })}
+                className="btn text-danger"
+              >
                 <small className="fas fa-times mx-sm-2"></small>
               </button>
             </div>
           ) : (
             <div>
-              <button onClick={() => this.setState({edit: true})} className="btn text-dark border-right">
+              <button
+                onClick={() => this.setState({ edit: true })}
+                className="btn text-dark border-right"
+              >
                 <small className="fa fa-edit mx-sm-2"></small>
               </button>
               <button onClick={this.props.deleteUser} className="btn text-dark">
@@ -83,7 +102,8 @@ class UserItem extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteUser: () => dispatch(deleteUser(ownProps.user.userName)),
-  updateUser: (userName, Name, Number) => dispatch(updateUser(userName, Name, Number))
+  updateUser: (userName, Name, Number) =>
+    dispatch(updateUser(userName, Name, Number)),
 });
 
 export default connect(null, mapDispatchToProps)(UserItem);
