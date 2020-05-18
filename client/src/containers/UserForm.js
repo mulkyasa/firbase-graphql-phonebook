@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 class UserForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { Name: "", Number: "", showForm: false, value: '' };
+    this.state = { Name: "", Number: "", showForm: false, value: "", search: true};
   }
 
   handleNameChange = (event) => {
@@ -19,10 +19,10 @@ class UserForm extends Component {
   handleSearchChange = (event) => {
     let value = event.target.value;
     this.setState({
-      value: event.target.value
-    })
+      value: event.target.value,
+    });
     this.props.searchUser(value);
-  }
+  };
 
   handleSubmit = (event) => {
     this.props.addUser(this.state.Name, this.state.Number);
@@ -81,7 +81,9 @@ class UserForm extends Component {
   render() {
     return (
       <div>
-        {!this.state.showForm && (
+        {this.state.showForm ? (
+          this.showForm()
+        ) : (
           <div className="row justify-content-between">
             <div className="form-group col-4">
               <button
@@ -112,7 +114,6 @@ class UserForm extends Component {
             </div>
           </div>
         )}
-        {this.state.showForm ? this.showForm() : null}
       </div>
     );
   }
@@ -120,7 +121,7 @@ class UserForm extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   addUser: (Name, Number) => dispatch(postUser(Name, Number)),
-  searchUser: (value) => dispatch(searchUser(value))
+  searchUser: (value) => dispatch(searchUser(value)),
 });
 
 export default connect(null, mapDispatchToProps)(UserForm);

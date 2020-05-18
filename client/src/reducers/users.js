@@ -1,7 +1,10 @@
 const users = (state = [], action) => {
   switch (action.type) {
     case "LOAD_USER_SUCCESS":
-      return action.users;
+      return action.users.map((item) => {
+        item.search = true;
+        return item;
+      });
 
     case "POST_USER":
       return [
@@ -10,6 +13,7 @@ const users = (state = [], action) => {
           userName: action.userName,
           Name: action.Name,
           Number: action.Number,
+          search: true
         },
       ];
 
@@ -45,6 +49,7 @@ const users = (state = [], action) => {
 
     case "SEARCH_USER":
       return state.map((item) => ({
+        ...console.log(item.Name.toLowerCase().includes(action.value)),
         ...item,
         ...(item.Name.toLowerCase().includes(action.value) ||
           item.Number.includes(action.value)),
@@ -53,6 +58,7 @@ const users = (state = [], action) => {
     case "SEARCH_USER_RESET":
       return state.map((item) => ({
         ...item,
+        search: true
       }));
 
     case "DELETE_USER":
